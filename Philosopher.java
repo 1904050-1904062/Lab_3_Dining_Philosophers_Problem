@@ -37,6 +37,21 @@ public class Philosopher extends Thread{
     }
 
 
+    private boolean pickUpRightFork() throws InterruptedException{
+        Thread.sleep(4000);
+        if(rightFork.tryLock()){
+            System.out.println("Philo "+id+ "Picked up right fork");
+            return true;
+        }
+        return false;
+    }
+
+    private void eat() throws InterruptedException{
+        System.out.println("Philo. "+id+ "is eating.");
+        Thread.sleep(random.nextInt(5)*1000);
+    }
+
+    
     
     
 }
