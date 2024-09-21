@@ -52,6 +52,11 @@ public class Philosopher extends Thread{
     }
 
     
-    
+    private void putDownForks(){
+        rightFork.unlock();
+        System.out.println("Philo. "+id+" put down the right fork.");
+        leftFork.unlock();
+        System.out.println("Philo. "+id+" put down the left fork.");
+    }
     
 }
