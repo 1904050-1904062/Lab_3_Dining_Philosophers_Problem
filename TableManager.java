@@ -9,6 +9,7 @@ public class TableManager {
      private final int numTables;
      private final List<Lock[]> forks = new ArrayList<>();
      private final List<Integer> philosophersAtSixthTable = new ArrayList<>();
+     private int lastMovedPhilosopher = -1;
 
 
      public TableManager(int numTables){
@@ -25,8 +26,21 @@ public class TableManager {
      }
 
      //getfork()
+     public Lock getFork(int table, int position){
+        return forks.get(table)[position];
+     }
 
      //isDeadLock()
+     public boolean isDeadlock(){
+        return new Random().nextBoolean();
+     }
+
+     public void movePhilosopherToSixthTable(){
+        Random rand = new Random();
+        int philosopherId = rand.nextInt(25);
+        philosophersAtSixthTable.add(philosopherId);
+        lastMovedPhilosopher = philosopherId;
+     }
 
 
     //movePhilosopherToTheSixth_Table()
