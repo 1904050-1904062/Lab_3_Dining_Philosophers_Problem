@@ -35,14 +35,26 @@ public class TableManager {
         return new Random().nextBoolean();
      }
 
+
+     //movePhilosopherToTheSixth_Table()
      public void movePhilosopherToSixthTable(){
         Random rand = new Random();
         int philosopherId = rand.nextInt(25);
         philosophersAtSixthTable.add(philosopherId);
         lastMovedPhilosopher = philosopherId;
+        System.out.println("Philo. "+philosopherId+" moved to the sixth table");
      }
 
 
-    //movePhilosopherToTheSixth_Table()
+     public boolean isSixthTableDeadlocked(){
+        return philosophersAtSixthTable.size() >= 5;
+     }
+
+     public int getLastMovedPhilosopher(){
+        return lastMovedPhilosopher;
+     }
+
+
+    
 
 }
