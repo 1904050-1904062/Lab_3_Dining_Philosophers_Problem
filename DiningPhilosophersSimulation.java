@@ -17,4 +17,29 @@ public class DiningPhilosophersSimulation {
     }
 
     //startSimulation() should be written here.
+    public void startSimulation(){
+        List<Thread> threads = new ArrayList<>();
+
+        for(int table=0; table<NUM_TABLES-1; table++){
+            for(int i=0; i<PHILOSOPHERS_PER_TABLE; i++){
+                Lock leftFork = tableManager.getFork(table, i);
+                Lock rightFork = tableManager.getFork(table, (i+1)%PHILOSOPHERS_PER_TABLE);
+                Philosopher philosopher = new Philosopher(table*PHILOSOPHERS_PER_TABLE+i, leftFork, rightFork, tableManager);
+                threads.add(philosopher);
+                philosopher.start();
+            }
+        }
+
+        monitorDeadlock();
+    }
+
+    private void monitorDeadlock(){
+        //in this section i have checked deadlock and move to the sixth table
+        while (true) {
+            if (tableManager.isDeadlock()) {
+                System.out.println("Dedlock Detected....Moving philosopher to last(6)th table");
+                tableManager.movePhilosopherToSixthTable();
+            }
+        }
+    }
 }
