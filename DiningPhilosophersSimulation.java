@@ -39,6 +39,11 @@ public class DiningPhilosophersSimulation {
             if (tableManager.isDeadlock()) {
                 System.out.println("Dedlock Detected....Moving philosopher to last(6)th table");
                 tableManager.movePhilosopherToSixthTable();
+                if (tableManager.isSixthTableDeadlocked()) {
+                    System.out.println("Over!!! Sixth table has enterfd Deadlock State");
+                    System.out.println("Last Philosopher : "+tableManager.getLastMovedPhilosopher());
+                    break;
+                }
             }
         }
     }

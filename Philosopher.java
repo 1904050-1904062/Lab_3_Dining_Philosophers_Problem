@@ -18,7 +18,22 @@ public class Philosopher extends Thread{
     }
 
     public void run(){
-
+        try {
+            while (true) {
+                think();
+                if (pickUpLeftFork()) {
+                   if (pickUpRightFork()) {
+                        eat();
+                        putDownForks();
+                   } else{
+                    leftFork.unlock();
+                   }
+                }
+            }
+        } catch (InterruptedException e) {
+            // TODO: handle exception
+            System.out.println("Philo "+id+" was Interrupted");
+        }
     }
 
 
