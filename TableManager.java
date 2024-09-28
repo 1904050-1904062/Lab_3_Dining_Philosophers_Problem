@@ -10,6 +10,7 @@ public class TableManager {
      private final List<Lock[]> forks = new ArrayList<>();
      private final List<Integer> philosophersAtSixthTable = new ArrayList<>();
      private int lastMovedPhilosopher = -1;
+     //Convert converter = new Convert();
 
 
      public TableManager(int numTables){
@@ -42,7 +43,7 @@ public class TableManager {
         int philosopherId = rand.nextInt(25);
         philosophersAtSixthTable.add(philosopherId);
         lastMovedPhilosopher = philosopherId;
-        System.out.println("Philo. "+philosopherId+" moved to the sixth table");
+        System.out.println("Philo  "+(char)(philosopherId+'A')+"  moved to the sixth table");
      }
 
 
